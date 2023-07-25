@@ -79,11 +79,8 @@
                     <form @submit.prevent="checkoutnow">
                         <div class="modal-body">
 
-                            <label for="user">Kasir:</label>
-                            <select required class="form-control" v-model="checkout.id_user" id="user">
-                                <option v-for="nama in kasir" :key="nama.id_user" :value="nama.id_user">{{ nama.nama_petugas }}
-                                </option>
-                            </select>
+                            <label for="meja" >Nama Kasir</label>                            
+                            <input type="text" class="form-control" v-model="nama" readonly> 
                             <label for="meja">Meja</label>
                             <select required class="form-control" v-model="checkout.id_meja" id="meja">
                                 <option v-for="nomor in meja" :key="nomor.id_meja" :value="nomor.id_meja">{{
@@ -122,16 +119,27 @@
 
                 },
                 checkout: {
-
+                    id_user : localStorage.getItem('id_user')
                 },
+                nama:localStorage.getItem('username')
             }
         },
         mounted(){
             this.getcart()
             this.getkasir()
             this.getmeja()
+            
         },
         methods:{
+            
+            getSelectedKasir() {
+                const username = localStorage.getItem('username');
+                const selectedKasir = this.kasir.find(kasir => kasir.nama_petugas === username);
+                
+                if (selectedKasir) {
+                    this.checkout.id_user = selectedKasir.id_user;
+                }
+            },
             getkasir() {
             axios.get('http://localhost:8000/api/getkasir')
                 .then(

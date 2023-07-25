@@ -141,6 +141,9 @@
                         (response) => {
                             localStorage.setItem('token', response.data.token)
                             localStorage.setItem('role', response.data.role)
+                            localStorage.setItem('username', response.data.username)
+                            localStorage.setItem('id_user', response.data.id_user)
+                            
                             if (response.data.role === "admin") {
                                 location.href = '/datapetugas'
                             } else if (response.data.role === "manager") {
