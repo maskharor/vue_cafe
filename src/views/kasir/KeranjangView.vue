@@ -79,7 +79,7 @@
                     <form @submit.prevent="checkoutnow">
                         <div class="modal-body">
 
-                            <label for="meja" >Nama Kasir</label>                            
+                            <label for="nama_kasir" >Nama Kasir</label>                            
                             <input type="text" class="form-control" v-model="nama" readonly> 
                             <label for="meja">Meja</label>
                             <select required class="form-control" v-model="checkout.id_meja" id="meja">

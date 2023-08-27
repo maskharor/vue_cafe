@@ -4,7 +4,8 @@
             <div>
 
                 <b>Cafe Wikusama</b><br>
-                <small>Jalan mars No.99 (sawojajar) <br> IG: @WikusamaCafe <br>
+                <small>Jalan mars No.99 (sawojajar) <br> IG: @WikusamaCafe <br> <br> Nama Kasir: {{ data_transaksi[0].nama_petugas }}<br> <br> Tgl : {{ data_transaksi[0].tgl_pesan }}<br> 
+                
                 <span style="text-decoration: underline; color: blue; cursor: pointer;" @click="print()" class="bagian-nonprint">Print</span>
                 </small>
 
@@ -28,6 +29,8 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <b>Total Harga : {{ total_harga }} </b>
                 </div>
 
                 <div class="note">
@@ -81,11 +84,13 @@
     export default{
         data(){
             return{
-                data_transaksi:{}
+                data_transaksi:{},
+                total_harga:''
             }
         },
         mounted(){
             this.getdata(this.$route.params.code)
+            this.gettotal()
         },
         methods: {
             getdata(code) {
@@ -97,6 +102,15 @@
                         }
                     )
             },
+            gettotal() {
+            axios.get('http://localhost:8000/api/gettotal/' + this.$route.params.code)
+                .then(
+                    ({ data }) => {
+                        console.log(data)
+                        this.total_harga = data
+                    }
+                )
+        },
             print(){
                 window.print()
                 setTimeout(() => {

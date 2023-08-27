@@ -1,12 +1,9 @@
 <template>
     <div>
          <div class="hero_area">
-            <div class="bg-box">
-                <img src="images/hero-bg.jpg" alt="">
-            </div>
-
+            
             <!-- header section strats -->
-            <header class="header_section">
+            <header style="background-color: #191825;" class="header_section">
             <div class="container">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="index.html">
@@ -48,7 +45,7 @@
             </div>
             </header>
             <!-- end header section -->
-        </div>
+        
 
         <!-- food section -->
         <section class="food_section layout_padding">
@@ -58,10 +55,10 @@
                 Our Menu
                 </h2>
             </div>
-            <input type="text" class="form-control mb-4" v-model="carimenu" placeholder="Search menu...">
-            <div class="filters-content" v-for="menu in filter_menu" :key="menu.id_menu">
-                <div class="row grid">
-                    <div class="col-sm-6 col-lg-4 all pizza">
+            <!-- <input type="text" class="form-control mb-4" v-model="carimenu" placeholder="Search menu..."> -->
+            <div class="filters-content" >
+                <div class="row grid ">
+                    <div class="col-sm-6 col-lg-3 all pizza" v-for="menu in filter_menu" :key="menu.id_menu">
                         <div class="box">
                         <div>
                             <div class="img-box">
@@ -74,9 +71,9 @@
                             <h5>
                                 {{ menu.nama_menu }}
                             </h5>
-                            <p>
+                            <!-- <p>
                                 {{ menu.desc }}
-                            </p>
+                            </p> -->
 
                             <div class="options">
                                 <h6>
@@ -95,13 +92,10 @@
                     </div>
                 </div>
             </div>
-            <div class="btn-box">
-                <a href="">
-                View More
-                </a>
-            </div>
+           
             </div>
         </section>
+    </div>
         <!-- end food section -->
 
         <!-- Modal -->

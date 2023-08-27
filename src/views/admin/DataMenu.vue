@@ -100,6 +100,9 @@
                             <label for="price">Price:</label>
                             <input type="text" class="form-control" v-model="menu.price" required placeholder="Masukkan harga...">
                             
+                            <label for="price">Deskripsi:</label>
+                            <input type="text" class="form-control" v-model="menu.desc" required placeholder="Masukkan harga...">
+                            
                             <label for="gambar">Foto:</label>
                             <input type="file" id="gambar" class="form-control" @change="UploadFoto($event)" required>
                             
@@ -246,6 +249,7 @@
                             this.detailmenu.nama_menu = response.data[0].nama_menu
                             this.image = response.data[0].gambar
                             this.detailmenu.type = response.data[0].type
+                            this.detailmenu.desc = response.data[0].desc
                             this.detailmenu.price = response.data[0].price
                         }
                     )
